@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+  
+  <title>二、Git基础指令 | Tsuburaya Wondonの小站</title>
+  <link rel="shortcut icon" href="/img/favicon.png">
+  <meta name="description" content="1. 🤗获取Git仓库  通常我们有两种获取Git仓库的方式：  将尚未进行版本控制的本地目录转换为Git仓库。 从其他服务器克隆一个已存在的Git仓库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二、Git基础指令">
+<meta property="og:url" content="https://tsu-wondon.gitee.io/2023-05-09-%E4%BA%8C%E3%80%81Git%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4.html">
+<meta property="og:site_name" content="Tsuburaya Wondonの小站">
+<meta property="og:description" content="1. 🤗获取Git仓库  通常我们有两种获取Git仓库的方式：  将尚未进行版本控制的本地目录转换为Git仓库。 从其他服务器克隆一个已存在的Git仓库。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/qvkY6PhR.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/bgnbW7dJ.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/g43pGiy9.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/e41DklOT.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/xvSEroVB.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/5gEn7y9l.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/EHe6Ge5i.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/wcJTFOo4.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/X6b5PW1q.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/pRU5oFLf.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/ZkRCg2Fk.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/BPD9Nhd0.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/bQNvs8q3.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/V0Mgt8Zq.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/OQZRRfEW.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/T9oydHso.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/h11r2Usw.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/LyTgIZaP.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/CgIp1qwk.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/dQ5NJqYw.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/04/NdTnesK6.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/04/Ez0Tuxqm.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/04/IOHl6K1h.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/04/p4r94glF.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/04/7Ldh1Vzd.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/04/Op8wBK7U.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/04/0sBXP2Zq.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/04/kGZAV7Tu.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/04/RuxH5ZCu.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/drWeDxzv.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/7zMTQolz.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/U9ib1xGV.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/04/30/YaS8e7yQ.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/05/lcmQ88n1.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/05/jjT2P1zm.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/05/ffhAVBJH.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/1cPX1YCn.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/BObMMqCB.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/1GMnXkRc.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/HbpcpJJP.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/mKIMhDEy.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/rFmh95fY.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/HbpcpJJP.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/yzfj7uzg.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/HQj4s8As.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/LNqpUE4O.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/S7Mn6TY0.png">
+<meta property="og:image" content="https://img1.imgtp.com/2023/05/06/vV0TZ16t.png">
+<meta property="article:published_time" content="2023-05-09T15:14:48.000Z">
+<meta property="article:modified_time" content="2023-05-09T16:29:17.098Z">
+<meta property="article:author" content="Tsuburaya Wondon">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="版本控制">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img1.imgtp.com/2023/04/30/qvkY6PhR.png">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+<script src="/js/image-preview.js" defer></script>
+
+  
+  
+<script src="/js/main.js" defer></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<html>
+
+<body>
+  <div class="container">
+    <header class="user-select">
+  <div class="container-wrap">
+    <div class="container">
+      
+      
+      
+      <style>
+        .logo>* {
+          width:auto;height:4rem;border-radius:50%;;
+        }
+      </style>
+      
+      <a href="/" class="logo">
+        <img src="/img/logo.gif" />
+      </a>
+      
+      <nav>
+        
+        <div class="search" tabindex="-1">
+          <input class="search-input" placeholder="Search for articles" type="search" maxlength="64">
+          <div class="seach-icon-container">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12.4008 12.4008C14.744 10.0577 14.744 6.25871 12.4008 3.91556C10.0577 1.57242 6.25871 1.57242 3.91556 3.91556C1.57242 6.25871 1.57242 10.0577 3.91556 12.4008C6.25871 14.744 10.0577 14.744 12.4008 12.4008ZM12.4008 12.4008L15.5828 15.5828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"></path>
+</svg>
+          </div>
+          <div class="search-history">
+            <div class="search-history-title">
+              <span>Search for History</span>
+              <span class="search-history-clear">Clear</span>
+            </div>
+            <div class="search-history-list"></div>
+          </div>
+          <div class="search-result"></div>
+          
+          
+<script src="/js/search.js" extname="xml" path="&#x2F;search.xml" async></script>
+
+        </div>
+        
+        <ul class="nav-list">
+          
+          <li class="nav-list-item">
+            <a href="/">主页</a>
+          </li>
+          
+          <li class="nav-list-item">
+            <a href="/about">关于我</a>
+          </li>
+          
+        </ul>
+        <div class="sidebar-nav" tabindex="-1">
+          <svg class="sidebar-nav-btn" viewBox="0 0 16 16" width="16" height="16">
+  <path d="M3,11.335h16M3,6h16M3,16.67h16" transform="translate(-3-3.335)" stroke="currentColor" stroke-width="2" />
+</svg>
+          <div class="mask" tabindex="-1"></div>
+          <ul class="nav-list">
+            
+            <li class="nav-list-item">
+              <a href="/">主页</a>
+            </li>
+            
+            <li class="nav-list-item">
+              <a href="/about">关于我</a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main class="main-block-wrap">
+      <div class="main-block">
+        
+        <h1 class="page-title">二、Git基础指令</h1>
+        
+        <article class="article page">
+  <div class="article-info">
+    
+    <img src="https://img1.imgtp.com/2023/05/10/99m0Y0Dl.jpg" alt="avatar" class="avatar">
+    
+    <div class="article-meta">
+      <div class="author-name">Tsuburaya Wondon</div>
+      <div class="article-meta-list">
+        
+        <time datetime="2023-05-09 23:14:48" title="2023-05-09 23:14:48" class="time">
+          2023-05-09 23:14:48
+        </time>
+        
+        <div class="article-meta-item-wrap">
+          
+          <div class="article-meta-item">
+            <svg class="word-icon" width="16" height="16" viewBox="0 0 48 48" fill="none" stroke-width="4" stroke-linejoin="round" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" >
+  <path d="M10 4H30L40 14V42C40 43.1046 39.1046 44 38 44H10C8.89543 44 8 43.1046 8 42V6C8 4.89543 8.89543 4 10 4Z"></path>
+  <path d="M16.0083 20L19.0083 34L24.0083 24L29.0083 34L32.0083 20"></path>
+</svg>
+            <span>2.7k</span>
+          </div>
+          
+          
+          <div class="article-meta-item">
+            <svg class="time-icon" width="16" height="16" viewBox="0 0 48 48" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z" />
+  <path d="M24.0084 12.0001L24.0072 24.0089L32.4866 32.4883" />
+</svg>
+            <span>9min</span>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="article-content"><!--toc-->
+<h3 id="1-🤗获取Git仓库">1. 🤗获取Git仓库</h3>
+<ul>
+<li>通常我们有两种获取Git仓库的方式：
+<ol>
+<li>将尚未进行版本控制的<strong>本地目录</strong>转换为Git仓库。</li>
+<li>从其他服务器<strong>克隆</strong>一个已存在的Git仓库。</li>
+</ol>
+</li>
+</ul>
+<span id="more"></span>
+<h4 id="1-1-在已存在的目录中初始化仓库">1.1 在已存在的目录中初始化仓库</h4>
+<ol>
+<li>打开Git Bash并输入下面的指令 <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd 目录地址（分隔符记得用双反斜杠&quot;\\&quot;）</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+<img src="https://img1.imgtp.com/2023/04/30/qvkY6PhR.png" alt="IOZ_41A4_NX1M5T6IW3R6C0.png"><br>
+当然，如果你觉得上面的方式太麻烦，其实也可以这样：<br>
+<img src="https://img1.imgtp.com/2023/04/30/bgnbW7dJ.png" alt="Snipaste_2023-04-30_11-42-18.png"><br>
+选中一个文件夹，鼠标右击，点击“显示更多选项”，然后在出现列表中点“Git Bash Here”即可。</li>
+<li>然后在当前目录下会出现一个叫.git的文件夹（前面我们已经提到过这个文件夹下的config目录），这个文件夹具体的作用并不需要太了解，你只需要知道这里面保存了Git仓库的骨干文件。在windows的文件资源管理器中，你甚至看不到这个文件，因为这是一个隐藏文件（它至关重要，谨防你误改了它）<br>
+<img src="https://img1.imgtp.com/2023/04/30/g43pGiy9.png" alt="Snipaste_2023-04-30_09-30-10.png"><br>
+当然其实也可以通过下面的方式让它现身，不过你只需要知道它存在就好了，最好还是<strong>不要</strong>让它显式地出现！<br>
+<img src="https://img1.imgtp.com/2023/04/30/e41DklOT.png" alt="Snipaste_2023-04-30_09-31-55.png"><br>
+<img src="https://img1.imgtp.com/2023/04/30/xvSEroVB.png" alt="Snipaste_2023-04-30_09-46-22.png"></li>
+</ol>
+<h4 id="1-2-克隆现有的仓库">1.2 克隆现有的仓库</h4>
+<blockquote>
+<p>如果你想获得一份已经存在的Git仓库的拷贝，比如说你想为某个开源项目做贡献，或者单纯想学习别人的项目，就需要用到<strong>克隆指令</strong><code>git clone</code>。记住我们前面所说的，当你执行克隆时，你会将文件所有的版本以及历史记录完整的拉取到本地。<br>
+输入下列指令</p>
+</blockquote>
+<figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone &lt;repo&gt; [&lt;dir&gt;]</span><br></pre></td></tr></table></figure>
+<p>repo指的是仓库（repository）的地址，如下图，我在gitee（基于Git的一个远程仓库，后续再详细介绍）找到一个12306抢票的开源项目，复制它的克隆链接。dir指目录名，克隆仓库的名字默认与远程仓库相同，但是你可以在后面加上你想要让它叫的名。（注意：当使用<strong>方括号</strong>时，表示括号内的内容为<strong>可选</strong>项，而<strong>尖括号</strong>表示<strong>必须替换</strong>为实际的值！）<br>
+<img src="https://img1.imgtp.com/2023/04/30/5gEn7y9l.png" alt="Snipaste_2023-04-30_10-23-57.png"><br>
+然后来到Git Bash输入指令<br>
+<img src="https://img1.imgtp.com/2023/04/30/EHe6Ge5i.png" alt="Snipaste_2023-04-30_10-28-11.png"><br>
+就会看到，这个项目到了我们的本地<br>
+<img src="https://img1.imgtp.com/2023/04/30/wcJTFOo4.png" alt="Snipaste_2023-04-30_10-29-43.png"><br>
+<img src="https://img1.imgtp.com/2023/04/30/X6b5PW1q.png" alt="Snipaste_2023-04-30_10-30-17.png"></p>
+<h3 id="2-🤗记录每次更新到仓库">2.🤗记录每次更新到仓库</h3>
+<blockquote>
+<p>通过上面的操作，我们有了一个Git本地仓库。通常，我们需要创建文件，对这些文件做出修改，同时每当我们完成了一个阶段的目标，想要记录下它时，就将它提交到仓库。</p>
+</blockquote>
+<ul>
+<li>注意，工作目录下的所有文件无外乎两种状态：<strong>已跟踪</strong>或<strong>未跟踪</strong>。已跟踪的是指那些已经纳入版本控制的文件，在上一次快照中有它们的记录。未跟踪的就是除已跟踪文件外的所有文件。</li>
+<li>工作一段时间后，它们的状态可能是：<strong>未修改，已修改</strong>或者<strong>已暂存</strong>（上篇提到过）。</li>
+<li>简而言之，已跟踪的文件就是Git已经知道的文件。打个比方，在我们新初始化的一个本地仓库里，本地仓库里原有的文件都会被纳为未修改的范畴，此时，你再新建一个文件，就是未跟踪的，然后对未修改的文件，在后续操作中它们可能变成已修改或已暂存。如此循环反复。</li>
+</ul>
+<p><img src="https://img1.imgtp.com/2023/04/30/pRU5oFLf.png" alt="Snipaste_2023-04-30_11-34-32.png"></p>
+<h4 id="2-1-查看初始状态">2.1 查看初始状态</h4>
+<figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+<p><img src="https://img1.imgtp.com/2023/04/30/ZkRCg2Fk.png" alt="Snipaste_2023-04-30_11-46-50.png"><br>
+如果显示结果的是上图这样，说明文件夹干净得不能再干净了😂。</p>
+<h4 id="2-2-跟踪文件">2.2 跟踪文件</h4>
+<ul>
+<li>输入下面的指令创建文件并添加内容“My Project”  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;My Project&quot; &gt; README</span><br></pre></td></tr></table></figure>
+</li>
+<li>跟踪文件  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add README</span><br></pre></td></tr></table></figure>
+如果出现了下面的情况请别担心<br>
+<img src="https://img1.imgtp.com/2023/04/30/BPD9Nhd0.png" alt="Snipaste_2023-04-30_11-39-46.png"><br>
+且看ChatGPT的回答<br>
+<img src="https://img1.imgtp.com/2023/04/30/bQNvs8q3.png" alt="Snipaste_2023-04-30_12-01-41.png"><br>
+<img src="https://img1.imgtp.com/2023/04/30/V0Mgt8Zq.png" alt="Snipaste_2023-04-30_12-02-54.png"></li>
+<li>再次使用<code>git status</code>指令，你会发现文件已经成功被跟踪并且处于暂存状态<br>
+<img src="https://img1.imgtp.com/2023/04/30/OQZRRfEW.png" alt="Snipaste_2023-04-30_16-01-06.png"><br>
+可以看到<strong>be committed</strong>（已暂存）</li>
+<li>将修改后的文件添加至暂存区<br>
+对文件进行修改时，文件会被<strong>拷贝</strong>一份到工作区，我们修改的并不是暂存区内的文件而是拷贝出来的这份，我们来看看。现在我将README的内容稍改，再重新保存，再使用<code>git status</code>指令<br>
+<img src="https://img1.imgtp.com/2023/04/30/T9oydHso.png" alt="Snipaste_2023-04-30_16-23-43.png"><br>
+可以看到<strong>new file</strong>和<strong>modified</strong>（已修改）的标记共存<br>
+再次使用<code>git add README</code>指令（这个指令有多种作用，添加跟踪，把已跟踪的文件添加至暂存区）。<code>git status</code>查看状态如下，这时显示如下<br>
+<img src="https://img1.imgtp.com/2023/04/30/h11r2Usw.png" alt="Snipaste_2023-04-30_16-17-59.png"><br>
+你可能会疑惑为什么又只有一个了，且看ChatGPT的回答<br>
+<img src="https://img1.imgtp.com/2023/04/30/LyTgIZaP.png" alt="Snipaste_2023-04-30_16-32-32.png"></li>
+</ul>
+<h4 id="2-3-提交更新">2.3 提交更新</h4>
+<ul>
+<li>普通提交  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit [-m &lt;message&gt;]</span><br></pre></td></tr></table></figure>
+message表示提交信息，如果你不写方括号内的内容，在输入指令并按下enter后会自动打开你的Git默认编辑器让你输入提交信息，当然这样比较麻烦，直接加上-m选项吧<br>
+<img src="https://img1.imgtp.com/2023/04/30/CgIp1qwk.png" alt="Snipaste_2023-04-30_17-39-09.png"></li>
+<li>跳过暂存区直接提交<br>
+尽管暂存区的存在让我们更方便准备要提交的文件，但有时候这么做略显繁琐，我们可以在<code>git commit</code>后加上-a选项，这样Git就会自动把所有已经跟踪过的文件暂存起来一起提交。</li>
+<li>查看提交记录可以使用下面指令  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br></pre></td></tr></table></figure>
+<img src="https://img1.imgtp.com/2023/04/30/dQ5NJqYw.png" alt="Snipaste_2023-04-30_17-44-34.png"></li>
+</ul>
+<h4 id="2-4-撤销操作">2.4 撤销操作</h4>
+<ul>
+<li>
+<p>撤销提交<br>
+有时候我们提交完更新可能突然发现提交信息不太对或者忘了几个文件未提交，这时就需要用到下面的指令撤销上一次的提交</p>
+  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
+<p>输入这条指令后，会自动打开我们的编辑器，修改提交信息重新保存就会自动重新提交。最后你会发现只有一条修改后的记录。</p>
+<ul>
+<li>创建两个c文件，使用<code>git status</code>查看状态如下<br>
+<img src="https://img1.imgtp.com/2023/05/04/NdTnesK6.png" alt="Snipaste_2023-05-04_16-15-20.png"></li>
+<li>提交其中一个<br>
+<img src="https://img1.imgtp.com/2023/05/04/Ez0Tuxqm.png" alt="Snipaste_2023-05-04_16-17-44.png"></li>
+<li>提交另一个c文件并且和上一次的提交共占一条记录<br>
+<img src="https://img1.imgtp.com/2023/05/04/IOHl6K1h.png" alt="Snipaste_2023-05-04_16-20-55.png"></li>
+<li>查看记录，果然只有一条<br>
+<img src="https://img1.imgtp.com/2023/05/04/p4r94glF.png" alt="Snipaste_2023-05-04_16-21-35.png"></li>
+</ul>
+</li>
+<li>
+<p>取消暂存的文件<br>
+需要用到指令</p>
+  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建两个文本文件<br>
+<img src="https://img1.imgtp.com/2023/05/04/7Ldh1Vzd.png" alt="Snipaste_2023-05-04_16-28-24.png"></li>
+<li>全部添加至暂存区<br>
+<img src="https://img1.imgtp.com/2023/05/04/Op8wBK7U.png" alt="Snipaste_2023-05-04_16-30-20.png"></li>
+<li>取消对其中一个文件的暂存<br>
+<img src="https://img1.imgtp.com/2023/05/04/0sBXP2Zq.png" alt="Snipaste_2023-05-04_16-32-23.png"></li>
+<li>还可以用下面的指令（git 2.23版本之后新增的指令），效果和上面完全相同，<code>git reset</code>还有更多的用法，而<code>git restore</code>单纯得多，只能用于撤销暂存  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git restore --staged &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>撤销暂存区文件的修改</p>
+<p>注意，这里说的“撤销撤销暂存区文件的修改”是指将暂存区的文件回退到工作区并恢复到上一个版本，需要用到下面的指令</p>
+  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改02.txt的内容后使用<code>git checkout -- 02.txt</code>指令<br>
+<img src="https://img1.imgtp.com/2023/05/04/kGZAV7Tu.png" alt="Snipaste_2023-05-04_17-50-43.png"></li>
+<li>查看状态，会发现修改已被撤销<br>
+<img src="https://img1.imgtp.com/2023/05/04/RuxH5ZCu.png" alt="Snipaste_2023-05-04_17-52-27.png"></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-🤗其它">3. 🤗其它</h3>
+<h4 id="3-1-状态简览">3.1 状态简览</h4>
+<ul>
+<li>前面我们学了使用<code>git status</code>来查看工作目录的状态，它的输出十分详细，但有时候文件较多时会显得比较繁琐，所以可以使用<code>-s</code>或者<code>--short</code>选项来使输出更精简</li>
+</ul>
+<p><img src="https://img1.imgtp.com/2023/04/30/drWeDxzv.png" alt="Snipaste_2023-04-30_16-39-21.png"></p>
+<ul>
+<li>现在就输出了一句话，你会不会感到奇怪，上面的A和READEME隔得好像很开？嗯，其实，这里有两栏，左栏表示暂存区的状态，右栏表示工作区的状态，此时这个文件在暂存区（当然本质上来说只是一个副本），所以右栏为空。‘A’表示已暂存，此外’M’表示已修改，’？'表示未跟踪。根据这些符号可以很容易推出文件的状态。</li>
+</ul>
+<h4 id="3-2-状态复览">3.2 状态复览</h4>
+<ul>
+<li>“复”是指复杂哦。有时候你可能觉得<code>git status</code>的输出太简略，如果你想要更详细的输出，可以用<code>git diff</code>指令。直接的<code>git diff</code>用来比较工作区和暂存区之间的差异。<code>git diff (--cached|--stage)</code>比较暂存区和最近一次提交（提交到暂存区的提交）之间的差异。<br>
+<img src="https://img1.imgtp.com/2023/04/30/7zMTQolz.png" alt="Snipaste_2023-04-30_17-20-10.png"><br>
+<img src="https://img1.imgtp.com/2023/04/30/U9ib1xGV.png" alt="Snipaste_2023-04-30_17-24-12.png"></li>
+</ul>
+<h4 id="3-3-获取帮助">3.3 获取帮助</h4>
+<ul>
+<li>你可以使用下列三个等价的指令找到Git命令的综合手册</li>
+</ul>
+<figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git help &lt;command&gt;</span><br><span class="line">$ git &lt;command&gt; (--help|-h)</span><br><span class="line">$ man git-&lt;command&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>尖括号前面有介绍（表示必选），'|'表示或者（前后不能有空格）。</li>
+</ul>
+<p>下面我用这个指令来查clone的用法（只截了一部分）<br>
+<img src="https://img1.imgtp.com/2023/04/30/YaS8e7yQ.png" alt="Snipaste_2023-04-30_16-55-54.png"></p>
+<h4 id="3-4-忽略文件">3.4 忽略文件</h4>
+<ul>
+<li>一般我们总会有一些文件无需纳入Git的管理，也并不想它们总出现在未跟踪文件列表。这种情况下我们可以建一个名为.gitignore的文件，列出需要忽略的文件。</li>
+<li>文件 .gitignore 的格式规范如下<br>
+• 所有空行或者以 # 开头的行都会被 Git 忽略。<br>
+• 可以使用标准的 glob 模式匹配，它会递归地应用在整个工作区中。<br>
+• 匹配模式可以以（/）开头防止递归。<br>
+• 匹配模式可以以（/）结尾指定目录。<br>
+• 要忽略指定模式以外的文件或目录，可以在模式前加上叹号（!）取反。</li>
+</ul>
+<h4 id="3-5-删除文件和移动文件">3.5 删除文件和移动文件</h4>
+<ul>
+<li>删除<strong>暂存区</strong>的文件<br>
+直接用下面指令会将文件从暂存区及工作目录同时删除（这个指令比较有风险，如果文件未被提交到仓库，就无法恢复了）  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm -f &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>新建测试文件<br>
+<img src="https://img1.imgtp.com/2023/05/05/lcmQ88n1.png" alt=""></li>
+<li>跟踪测试文件（加入暂存区）<br>
+<img src="https://img1.imgtp.com/2023/05/05/jjT2P1zm.png" alt="Snipaste_2023-05-05_21-51-24.png"></li>
+<li>删除测试文件<br>
+<img src="https://img1.imgtp.com/2023/05/05/ffhAVBJH.png" alt="Snipaste_2023-05-05_21-54-18.png"></li>
+<li>若只想将文件从暂存区删除，可以加上<code>--cached</code>选项  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<img src="https://img1.imgtp.com/2023/05/06/1cPX1YCn.png" alt="Snipaste_2023-05-06_00-04-43.png"></li>
+</ul>
+</li>
+<li>删除<strong>Git仓库</strong>里的文件
+<ul>
+<li>添加测试文件到仓库<br>
+<img src="https://img1.imgtp.com/2023/05/06/BObMMqCB.png" alt="Snipaste_2023-05-06_00-06-32.png"></li>
+<li>使用<code>git rm</code>指令<br>
+<img src="https://img1.imgtp.com/2023/05/06/1GMnXkRc.png" alt="Snipaste_2023-05-06_00-08-29.png"></li>
+<li>使用<code>git status</code>指令查看状态<br>
+你可能会疑惑这个deleted标记，事实上<code>git rm</code>进行了<strong>两步</strong>操作：将仓库里的文件移至暂存区，删除本地目录的测试文件。既然Git将删除操作保存到了暂存区，这样你有两种选择，使用<code>git commit</code>提交删除，这样文件会被彻底删除，或者使用<code>git restore --staged</code>将文件移出暂存区，再使用<code>git restore</code>取消工作目录的删除<br>
+<img src="https://img1.imgtp.com/2023/05/06/HbpcpJJP.png" alt="Snipaste_2023-05-06_00-09-52.png"><br>
+如下图，将测试文件从暂存区移除，再撤销工作目录的删除操作，这样，整个删除操作就完全撤销了<br>
+<img src="https://img1.imgtp.com/2023/05/06/mKIMhDEy.png" alt="Snipaste_2023-05-06_00-22-02.png"><br>
+<img src="https://img1.imgtp.com/2023/05/06/rFmh95fY.png" alt="Snipaste_2023-05-06_00-28-20.png"></li>
+<li>重新回到下面的状态<br>
+<img src="https://img1.imgtp.com/2023/05/06/HbpcpJJP.png" alt="Snipaste_2023-05-06_00-09-52.png"><br>
+这时选择提交删除到仓库，文件就会彻底没了<br>
+<img src="https://img1.imgtp.com/2023/05/06/yzfj7uzg.png" alt="Snipaste_2023-05-06_00-32-04.png"></li>
+</ul>
+</li>
+<li>移动文件<br>
+使用下面指令  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git mv &lt;source&gt; &lt;destination&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意不能将文件移除Git工作目录<br>
+<img src="https://img1.imgtp.com/2023/05/06/HQj4s8As.png" alt="Snipaste_2023-05-06_00-36-55.png"></li>
+<li>如果将已被跟踪的文件移动到了未被跟踪的目录，该文件<strong>不需要</strong>重新跟踪<br>
+<img src="https://img1.imgtp.com/2023/05/06/LNqpUE4O.png" alt="Snipaste_2023-05-06_00-43-51.png"><br>
+<img src="https://img1.imgtp.com/2023/05/06/S7Mn6TY0.png" alt="Snipaste_2023-05-06_00-44-22.png"></li>
+<li><code>git mv</code>还可以用于重命名文件<br>
+<img src="https://img1.imgtp.com/2023/05/06/vV0TZ16t.png" alt="Snipaste_2023-05-06_00-48-21.png"></li>
+</ul>
+</li>
+</ul>
+</div>
+  
+  
+  <div class="article-end">
+    <div class="article-meta">
+      
+      <div class="article-categories">
+        <div class="article-categories-name">Categories: </div>
+        
+        <a class="article-categories-item" href="/categories/Git/">
+          Git
+        </a>
+        
+      </div>
+      
+      
+      <div class="article-tags">
+        <div class="article-tags-name">Tags: </div>
+        
+        <a class="article-tags-item" href="/tags/Git/">
+          Git
+        </a>
+        
+        <a class="article-tags-item" href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+          版本控制
+        </a>
+        
+      </div>
+      
+    </div>
+    
+
+<div class="post-copyright">
+  <div class="post-copyright-icon"><svg class="copyright-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm117.134 346.753c-1.592 1.867-39.776 45.731-109.851 45.731-84.692 0-144.484-63.26-144.484-145.567 0-81.303 62.004-143.401 143.762-143.401 66.957 0 101.965 37.315 103.422 38.904a12 12 0 0 1 1.238 14.623l-22.38 34.655c-4.049 6.267-12.774 7.351-18.234 2.295-.233-.214-26.529-23.88-61.88-23.88-46.116 0-73.916 33.575-73.916 76.082 0 39.602 25.514 79.692 74.277 79.692 38.697 0 65.28-28.338 65.544-28.625 5.132-5.565 14.059-5.033 18.508 1.053l24.547 33.572a12.001 12.001 0 0 1-.553 14.866z" />
+</svg></div>
+  <div class="post-copyright-author">
+    <span class="post-copyright-meta">Authorship: </span>
+    <span class="post-copyright-info">
+      <a href="https://tsu-wondon.gitee.io">Tsuburaya Wondon</a>
+    </span>
+  </div>
+  <div class="post-copyright-type">
+    <span class="post-copyright-meta">Article Link: </span>
+    <span class="post-copyright-info">
+      <a href="https://tsu-wondon.gitee.io/2023-05-09-%E4%BA%8C%E3%80%81Git%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4.html">https://tsu-wondon.gitee.io/2023-05-09-%E4%BA%8C%E3%80%81Git%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4.html</a>
+    </span>
+  </div>
+  <div class="post-copyright-notice">
+    <span class="post-copyright-meta">Copyright: </span>
+    <span class="post-copyright-info">All posts on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> license unless otherwise stated. Please cite <a href="https://tsu-wondon.gitee.io" target="_blank">Tsuburaya Wondonの小站</a> !</span>
+  </div>
+</div>
+
+  </div>
+  
+</article>
+      </div>
+      <aside tabindex="-1">
+  
+  <div class="sidebar-block sidebar-sticky toc-wrap" tabindex="-1">
+    <div class="toc-btn">
+      <svg class="toc-btn-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z"></path>
+  <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z"></path>
+</svg>
+    </div>
+    <div class="sidebar-title toc-title">Catalog</div>
+    <div class="sidebar-body">
+      <ul class="toc-list">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%F0%9F%A4%97%E8%8E%B7%E5%8F%96Git%E4%BB%93%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">1. 🤗获取Git仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E5%9C%A8%E5%B7%B2%E5%AD%98%E5%9C%A8%E7%9A%84%E7%9B%AE%E5%BD%95%E4%B8%AD%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%93%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 在已存在的目录中初始化仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E5%85%8B%E9%9A%86%E7%8E%B0%E6%9C%89%E7%9A%84%E4%BB%93%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 克隆现有的仓库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%F0%9F%A4%97%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">2.🤗记录每次更新到仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E6%9F%A5%E7%9C%8B%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 查看初始状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E8%B7%9F%E8%B8%AA%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 跟踪文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E6%8F%90%E4%BA%A4%E6%9B%B4%E6%96%B0"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 提交更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 撤销操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%F0%9F%A4%97%E5%85%B6%E5%AE%83"><span class="toc-number">3.</span> <span class="toc-text">3. 🤗其它</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E7%8A%B6%E6%80%81%E7%AE%80%E8%A7%88"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 状态简览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E7%8A%B6%E6%80%81%E5%A4%8D%E8%A7%88"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 状态复览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E8%8E%B7%E5%8F%96%E5%B8%AE%E5%8A%A9"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 获取帮助</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 忽略文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%92%8C%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 删除文件和移动文件</span></a></li></ol></li></ol>
+      </ul>
+    </div>
+  </div>
+  
+</aside>
+    </main>
+    
+    
+
+<footer class="footer main-block-wrap">
+  <div class="main-block">
+    <div class="copyright">
+      &copy; 2023
+      Tsuburaya Wondon
+    </div>
+    <div class="framework-info">
+      <span>Framework</span>
+      <a href="https://hexo.io" target="_blank">Hexo</a>
+      <span class="footer-separator">|</span>
+      <span>Theme</span>
+      <a href="https://github.com/Lete114/hexo-theme-MengD" target="_blank">MengD</a>
+    </div>
+    
+    <div class="custom">A clean and lightweight Hexo theme</div>
+    
+  </div>
+</footer>
+  </div>
+</body>
+
+</html>
