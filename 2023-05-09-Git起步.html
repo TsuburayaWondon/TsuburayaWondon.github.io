@@ -3,14 +3,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
   
-  <title>一、Git起步 | Tsuburaya Wondonの小站</title>
+  <title>Git起步 | Tsuburaya Wondonの小站</title>
   <link rel="shortcut icon" href="/img/favicon.png">
-  <meta name="description" content="1. 🤗背景 1.1 什么是版本控制  版本控制是一种记录一个或若干个文件内容变化，以便将来查询特定版本修订情况的系统。 举个例子，我们做一个项目，从一开始的构思到最后的完成肯定要经历不少对项目文件的修改、重写、移动、分类等等操作，当然，我们在做这些操作时不可能百分之百能一次就达到预期的效果，很有可能我们在做完一次修改时发现其实之前的思路更好，然后需要回到文件之前的那个版本，这个时候，你大概就">
+  <meta name="description" content="1. 🤗背景 1.1 什么是版本控制  版本控制是一种记录一个或若干个文件内容变化，以便将来查询特定版本修订情况的系统。 举个例子，我们做一个项目，从一开始的构思到最后的完成肯定要经历不少对项目文件的修改、重写、移动、分类等等操作，当然，我们在做这些操作时不可能百分之百能一次就达到预期的效果，很有可能我们在做完一次修改时发现其实之前的思路更好，然后需要回到文件之前的那个版本，这个时候，你大概就能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一、Git起步">
-<meta property="og:url" content="https://www.tsu-wondon.top/2023-05-09-%E4%B8%80%E3%80%81Git%E8%B5%B7%E6%AD%A5.html">
+<meta property="og:title" content="Git起步">
+<meta property="og:url" content="https://www.tsu-wondon.top/2023-05-09-Git%E8%B5%B7%E6%AD%A5.html">
 <meta property="og:site_name" content="Tsuburaya Wondonの小站">
-<meta property="og:description" content="1. 🤗背景 1.1 什么是版本控制  版本控制是一种记录一个或若干个文件内容变化，以便将来查询特定版本修订情况的系统。 举个例子，我们做一个项目，从一开始的构思到最后的完成肯定要经历不少对项目文件的修改、重写、移动、分类等等操作，当然，我们在做这些操作时不可能百分之百能一次就达到预期的效果，很有可能我们在做完一次修改时发现其实之前的思路更好，然后需要回到文件之前的那个版本，这个时候，你大概就">
+<meta property="og:description" content="1. 🤗背景 1.1 什么是版本控制  版本控制是一种记录一个或若干个文件内容变化，以便将来查询特定版本修订情况的系统。 举个例子，我们做一个项目，从一开始的构思到最后的完成肯定要经历不少对项目文件的修改、重写、移动、分类等等操作，当然，我们在做这些操作时不可能百分之百能一次就达到预期的效果，很有可能我们在做完一次修改时发现其实之前的思路更好，然后需要回到文件之前的那个版本，这个时候，你大概就能">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s1.ax1x.com/2023/04/27/p9QcCq0.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/04/28/p9l4wQS.png">
@@ -47,7 +47,7 @@
 <meta property="og:image" content="https://img1.imgtp.com/2023/04/28/7V2UGRbW.png">
 <meta property="og:image" content="https://img1.imgtp.com/2023/04/28/fNqAZWCj.png">
 <meta property="article:published_time" content="2023-05-09T15:40:58.000Z">
-<meta property="article:modified_time" content="2023-05-09T16:29:07.221Z">
+<meta property="article:modified_time" content="2023-05-10T15:15:47.165Z">
 <meta property="article:author" content="Tsuburaya Wondon">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="版本控制">
@@ -144,7 +144,7 @@
     <main class="main-block-wrap">
       <div class="main-block">
         
-        <h1 class="page-title">一、Git起步</h1>
+        <h1 class="page-title">Git起步</h1>
         
         <article class="article page">
   <div class="article-info">
@@ -183,14 +183,12 @@
       </div>
     </div>
   </div>
-  <div class="article-content"><!--toc-->
-<h3 id="1-🤗背景">1. 🤗背景</h3>
+  <div class="article-content"><h3 id="1-🤗背景">1. 🤗背景</h3>
 <h4 id="1-1-什么是版本控制">1.1 什么是版本控制</h4>
 <ul>
 <li>版本控制是一种记录一个或若干个文件内容变化，以便将来查询特定版本修订情况的系统。</li>
 <li>举个例子，我们做一个项目，从一开始的构思到最后的完成肯定要经历不少对项目文件的修改、重写、移动、分类等等操作，当然，我们在做这些操作时不可能百分之百能一次就达到预期的效果，很有可能我们在做完一次修改时发现其实<strong>之前</strong>的思路更好，然后需要回到文件<strong>之前的那个版本</strong>，这个时候，你大概就能体会到版本控制的作用了。</li>
 </ul>
-<span id="more"></span>
 <h4 id="1-2-版本控制系统分类">1.2 版本控制系统分类</h4>
 <ol>
 <li>原始版本控制<br>
@@ -403,7 +401,7 @@
   <div class="post-copyright-type">
     <span class="post-copyright-meta">Article Link: </span>
     <span class="post-copyright-info">
-      <a href="https://www.tsu-wondon.top/2023-05-09-%E4%B8%80%E3%80%81Git%E8%B5%B7%E6%AD%A5.html">https://www.tsu-wondon.top/2023-05-09-%E4%B8%80%E3%80%81Git%E8%B5%B7%E6%AD%A5.html</a>
+      <a href="https://www.tsu-wondon.top/2023-05-09-Git%E8%B5%B7%E6%AD%A5.html">https://www.tsu-wondon.top/2023-05-09-Git%E8%B5%B7%E6%AD%A5.html</a>
     </span>
   </div>
   <div class="post-copyright-notice">
