@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>三、Git远程仓库</title>
+      <link href="/2023-05-10-%E4%B8%89%E3%80%81Git%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93.html"/>
+      <url>/2023-05-10-%E4%B8%89%E3%80%81Git%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-🤗背景">1. 🤗背景</h3><ul><li>我们前面介绍的所有Git操作都是基于本地仓库进行的，但是如果我们想和其他项目进行协同开发，远程仓库能极大提高我们的效率。</li><li>远程仓库是什么？<br>远程仓库是指托管在因特网或者其他网络上的你的项目的版本库。</li><li>远程仓库不一定在“远程”<br>你完全可以在一个“远程”仓库上工作，而它实际上在本地，“远程”的含义更多的是指“别处”。</li><li>有哪些远程仓库？<br>我们使用较多的是：<a href="https://github.com/">GitHub</a>，<a href="https://gitee.com/">Gitee</a><br><img src="https://img1.imgtp.com/2023/05/04/nsSMzltJ.png" alt="Snipaste_2023-05-04_20-02-17.png"><br><img src="https://img1.imgtp.com/2023/05/04/OeH6cFyo.png" alt="Snipaste_2023-05-04_20-02-06.png"></li></ul><h3 id="2-🤗远程仓库的使用（以下操作都基于Gitee）">2. 🤗远程仓库的使用（以下操作都基于Gitee）</h3><h4 id="2-1-添加远程仓库">2.1 添加远程仓库</h4><ul><li>打开Gitee官网（注册账号就不演示了），新建一个仓库<br><img src="https://img1.imgtp.com/2023/05/04/DDHCBG0b.png" alt="Snipaste_2023-05-04_20-18-47.png"><br><img src="https://img1.imgtp.com/2023/05/04/KPMfomr7.png" alt="Snipaste_2023-05-04_20-24-08.png"></li><li>建好仓库后会自动跳转至仓库的初始化界面，复制框起来的地方的链接（仓库的地址）<br><img src="https://img1.imgtp.com/2023/05/04/nApYfd4D.png" alt="Snipaste_2023-05-04_20-26-42.png"></li></ul><h4 id="2-2-链接远程仓库与本地仓库">2.2 链接远程仓库与本地仓库</h4><ul><li>添加仓库  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add &lt;name&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure><img src="https://img1.imgtp.com/2023/05/04/vHKtovT8.png" alt="Snipaste_2023-05-04_20-36-47.png"></li><li>查看远程仓库  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote</span><br><span class="line">$ git remote -v # 获取更详细输出</span><br></pre></td></tr></table></figure><img src="https://img1.imgtp.com/2023/05/04/FTzkYbzK.png" alt="Snipaste_2023-05-04_20-41-34.png"></li></ul><h4 id="2-3-推送文件至远程仓库">2.3 推送文件至远程仓库</h4><ul><li>推送文件到远程仓库的某一分支（输入指令后会弹出窗口，登录gitee账号）  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure><img src="https://img1.imgtp.com/2023/05/04/eiVQd2Od.png" alt="Snipaste_2023-05-04_20-48-14.png"><br>输入用户名（一般为手机号）和密码后（只有第一次需要，第一次输入后信息会保存在Windows凭据中），推送成功<br><img src="https://img1.imgtp.com/2023/05/04/gu4MvILl.png" alt="Snipaste_2023-05-04_20-52-47.png"><br>可以看到文件已推送至远程仓库<br><img src="https://img1.imgtp.com/2023/05/04/IzAukP7J.png" alt="Snipaste_2023-05-04_20-55-30.png"></li></ul><h4 id="2-4-从远程仓库拉取内容">2.4 从远程仓库拉取内容</h4><ul><li>使用下面的指令  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch &lt;remote&gt;</span><br><span class="line">$ git pull &lt;remote&gt;</span><br></pre></td></tr></table></figure><img src="https://img1.imgtp.com/2023/05/04/msZjLWrp.png" alt="Snipaste_2023-05-04_21-07-51.png"><br><img src="https://img1.imgtp.com/2023/05/04/DqfX4aaz.png" alt="Snipaste_2023-05-04_21-08-20.png"></li></ul><h4 id="2-5-远程仓库的重命名与移除">2.5 远程仓库的重命名与移除</h4><ul><li>重命名<ul><li>首先查看当前已有的远程仓库  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br></pre></td></tr></table></figure><img src="https://img1.imgtp.com/2023/05/05/P1504Geh.png" alt="Snipaste_2023-05-05_20-07-45.png"></li><li>可以看到仅有一个，使用下面的指令为它改名  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rename &lt;old&gt; &lt;new&gt;</span><br></pre></td></tr></table></figure><img src="https://img1.imgtp.com/2023/05/05/jTKA1onz.png" alt="Snipaste_2023-05-05_20-20-34.png"></li><li>再次使用<code>git remote -v</code>指令查看，可以看到改名已完成<br><img src="https://img1.imgtp.com/2023/05/05/R16QfS69.png" alt="Snipaste_2023-05-05_20-21-39.png"></li></ul></li><li>移除<ul><li>使用下面指令，再使用<code>git remote -v</code>指令查看，可以看到输出为空，远程仓库已移除  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote remove &lt;name&gt;</span><br></pre></td></tr></table></figure><img src="https://img1.imgtp.com/2023/05/05/ptLfnvXN.png" alt="Snipaste_2023-05-05_20-24-16.png"></li></ul></li></ul><h4 id="2-6-删除远程仓库的文件">2.6 删除远程仓库的文件</h4><ul><li>查看远程仓库文件  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git ls-tree &lt;tree-ish&gt;</span><br></pre></td></tr></table></figure><img src="https://img1.imgtp.com/2023/05/06/vVn8K5kV.png" alt="Snipaste_2023-05-06_13-42-48.png"><br><img src="https://img1.imgtp.com/2023/05/06/CHqoQkTO.png" alt="Snipaste_2023-05-06_13-43-33.png"></li><li>选择删除文件01.txt，加上<code>--cached</code>选项保留本地文件<br><img src="https://img1.imgtp.com/2023/05/06/zsfOaCxZ.png" alt="Snipaste_2023-05-06_13-45-10.png"></li><li>提交删除记录<br><img src="https://img1.imgtp.com/2023/05/06/56BnRfTG.png" alt="Snipaste_2023-05-06_13-46-26.png"></li><li>上传删除到远程仓库<br><img src="https://img1.imgtp.com/2023/05/06/cmMMsDiw.png" alt="Snipaste_2023-05-06_13-47-54.png"></li><li>再次查看远程仓库文件，01.txt已经被成功删除<br><img src="https://img1.imgtp.com/2023/05/06/qjWlmlPm.png" alt="Snipaste_2023-05-06_13-48-40.png"></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git 版本控制 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2023-05-10-hello-world.html"/>
       <url>/2023-05-10-hello-world.html</url>
