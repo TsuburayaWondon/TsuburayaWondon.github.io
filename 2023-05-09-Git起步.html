@@ -5,12 +5,12 @@
   
   <title>Git起步 | Tsuburaya Wondonの小站</title>
   <link rel="shortcut icon" href="/img/favicon.png">
-  <meta name="description" content="1. 🤗背景 1.1 什么是版本控制  版本控制是一种记录一个或若干个文件内容变化，以便将来查询特定版本修订情况的系统。 举个例子，我们做一个项目，从一开始的构思到最后的完成肯定要经历不少对项目文件的修改、重写、移动、分类等等操作，当然，我们在做这些操作时不可能百分之百能一次就达到预期的效果，很有可能我们在做完一次修改时发现其实之前的思路更好，然后需要回到文件之前的那个版本，这个时候，你大概就能">
+  <meta name="description" content="🤗背景 什么是版本控制  版本控制是一种记录一个或若干个文件内容变化，以便将来查询特定版本修订情况的系统。 举个例子，我们做一个项目，从一开始的构思到最后的完成肯定要经历不少对项目文件的修改、重写、移动、分类等等操作，当然，我们在做这些操作时不可能百分之百能一次就达到预期的效果，很有可能我们在做完一次修改时发现其实之前的思路更好，然后需要回到文件之前的那个版本，这个时候，你大概就能体会到版本控制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git起步">
 <meta property="og:url" content="https://www.tsu-wondon.top/2023-05-09-Git%E8%B5%B7%E6%AD%A5.html">
 <meta property="og:site_name" content="Tsuburaya Wondonの小站">
-<meta property="og:description" content="1. 🤗背景 1.1 什么是版本控制  版本控制是一种记录一个或若干个文件内容变化，以便将来查询特定版本修订情况的系统。 举个例子，我们做一个项目，从一开始的构思到最后的完成肯定要经历不少对项目文件的修改、重写、移动、分类等等操作，当然，我们在做这些操作时不可能百分之百能一次就达到预期的效果，很有可能我们在做完一次修改时发现其实之前的思路更好，然后需要回到文件之前的那个版本，这个时候，你大概就能">
+<meta property="og:description" content="🤗背景 什么是版本控制  版本控制是一种记录一个或若干个文件内容变化，以便将来查询特定版本修订情况的系统。 举个例子，我们做一个项目，从一开始的构思到最后的完成肯定要经历不少对项目文件的修改、重写、移动、分类等等操作，当然，我们在做这些操作时不可能百分之百能一次就达到预期的效果，很有可能我们在做完一次修改时发现其实之前的思路更好，然后需要回到文件之前的那个版本，这个时候，你大概就能体会到版本控制">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s1.ax1x.com/2023/04/27/p9QcCq0.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/04/28/p9l4wQS.png">
@@ -47,7 +47,7 @@
 <meta property="og:image" content="https://img1.imgtp.com/2023/04/28/7V2UGRbW.png">
 <meta property="og:image" content="https://img1.imgtp.com/2023/04/28/fNqAZWCj.png">
 <meta property="article:published_time" content="2023-05-09T15:40:58.000Z">
-<meta property="article:modified_time" content="2023-05-10T15:15:47.165Z">
+<meta property="article:modified_time" content="2023-05-11T06:56:19.628Z">
 <meta property="article:author" content="Tsuburaya Wondon">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="版本控制">
@@ -116,6 +116,10 @@
           </li>
           
           <li class="nav-list-item">
+            <a href="/archives">归档</a>
+          </li>
+          
+          <li class="nav-list-item">
             <a href="/about">关于我</a>
           </li>
           
@@ -129,6 +133,10 @@
             
             <li class="nav-list-item">
               <a href="/">主页</a>
+            </li>
+            
+            <li class="nav-list-item">
+              <a href="/archives">归档</a>
             </li>
             
             <li class="nav-list-item">
@@ -183,13 +191,13 @@
       </div>
     </div>
   </div>
-  <div class="article-content"><h3 id="1-🤗背景">1. 🤗背景</h3>
-<h4 id="1-1-什么是版本控制">1.1 什么是版本控制</h4>
+  <div class="article-content"><h3 id="🤗背景">🤗背景</h3>
+<h4 id="什么是版本控制">什么是版本控制</h4>
 <ul>
 <li>版本控制是一种记录一个或若干个文件内容变化，以便将来查询特定版本修订情况的系统。</li>
 <li>举个例子，我们做一个项目，从一开始的构思到最后的完成肯定要经历不少对项目文件的修改、重写、移动、分类等等操作，当然，我们在做这些操作时不可能百分之百能一次就达到预期的效果，很有可能我们在做完一次修改时发现其实<strong>之前</strong>的思路更好，然后需要回到文件<strong>之前的那个版本</strong>，这个时候，你大概就能体会到版本控制的作用了。</li>
 </ul>
-<h4 id="1-2-版本控制系统分类">1.2 版本控制系统分类</h4>
+<h4 id="版本控制系统分类">版本控制系统分类</h4>
 <ol>
 <li>原始版本控制<br>
 这是一种最简单的版本的控制方式，就是将文件复制一份，并在它的名字中加上版本信息。但是这种方式特别容易犯错，尤其在文件数量或者版本数众多的情况下，很可能你都分不清自己正在改的是哪一个版本😿。如下图，使用时间来做版本区分：<br>
@@ -204,7 +212,7 @@
 类似集中版本控制系统，但是客户端并不是仅仅保存最新的文件快照，而是把代码仓库<strong>完整地镜像</strong>下来，包括完整的历史纪录。这样一来，任何一处协同工作的服务器发生故障，时候都可以用任何一个镜像出来的本地仓库恢复。此外，许多这类系统都能和不同的远程代码仓库进行交互。图示如下：<br>
 <img src="https://s1.ax1x.com/2023/04/28/p9l4HF1.png" alt=""></li>
 </ol>
-<h3 id="2-🤗Git简述">2.🤗Git简述</h3>
+<h3 id="🤗Git简述">🤗Git简述</h3>
 <blockquote>
 <p>Git的诞生与Linux密不可分，2005年，开发BitKeeper（一种版本控制系统）的商业公司同Linux开源社区的合作关系结束，他们收回了Linux开源社区免费试用BitKeeper的权利，这迫使Linux开源社区（尤其是Linux创始人Linus Torvalds）基于BitKeeper的经验教训开发出自己的版本控制系统。他们对新系统提出了若干要求：</p>
 </blockquote>
@@ -282,7 +290,7 @@
 </ul>
 </li>
 </ol>
-<h4 id="2-2-安装Git（Windows环境下）">2.2 安装Git（Windows环境下）</h4>
+<h4 id="安装Git（Windows环境下）">安装Git（Windows环境下）</h4>
 <ul>
 <li>去官网下载安装程序，官网：<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">点我跳转</a><br>
 <img src="https://s1.ax1x.com/2023/04/28/p9lTHBD.png" alt=""></li>
@@ -328,11 +336,11 @@
 <img src="https://img1.imgtp.com/2023/04/28/L8iYghLo.png" alt="Snipaste_2023-04-28_18-06-44.png"><br>
 <img src="https://img1.imgtp.com/2023/04/28/CaTlXQMY.png" alt="Snipaste_2023-04-28_18-07-50.png"></li>
 </ul>
-<h3 id="3-🤗Git使用前配置">3. 🤗Git使用前配置</h3>
-<h4 id="3-1-Git-Bash使用">3.1 Git Bash使用</h4>
+<h3 id="🤗Git使用前配置">🤗Git使用前配置</h3>
+<h4 id="Git-Bash使用">Git Bash使用</h4>
 <p>前面提到Git采用命令行方式接受指令工作，我们可以在Git安装目录下找到它，如果我们上面选了将Git添加到“开始”菜单的话，可以直接在“开始”菜单找到它，点击Git Bash即可<br>
 <img src="https://img1.imgtp.com/2023/05/05/rcn19ztk.png" alt="Snipaste_2023-05-05_12-32-08.png"></p>
-<h4 id="3-2-git-configure修改Git配置">3.2 git configure修改Git配置</h4>
+<h4 id="git-configure修改Git配置">git configure修改Git配置</h4>
 <ul>
 <li>
 <p>Git自带一个叫git config的工具来帮助设置控制Git外观、行为的控制变量。这些变量存在三个不同的位置。</p>
@@ -426,7 +434,7 @@
     <div class="sidebar-title toc-title">目录</div>
     <div class="sidebar-body">
       <ul class="toc-list">
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%F0%9F%A4%97%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">1. 🤗背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 什么是版本控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 版本控制系统分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%F0%9F%A4%97Git%E7%AE%80%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">2.🤗Git简述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Git%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Git的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%AE%89%E8%A3%85Git%EF%BC%88Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 安装Git（Windows环境下）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%F0%9F%A4%97Git%E4%BD%BF%E7%94%A8%E5%89%8D%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">3. 🤗Git使用前配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-Git-Bash%E4%BD%BF%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 Git Bash使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-git-configure%E4%BF%AE%E6%94%B9Git%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 git configure修改Git配置</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%97%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">🤗背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">1.1.</span> <span class="toc-text">什么是版本控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">版本控制系统分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%97Git%E7%AE%80%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">🤗Git简述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Git%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Git的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Git%EF%BC%88Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">安装Git（Windows环境下）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%97Git%E4%BD%BF%E7%94%A8%E5%89%8D%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">🤗Git使用前配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Git-Bash%E4%BD%BF%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">Git Bash使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#git-configure%E4%BF%AE%E6%94%B9Git%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">git configure修改Git配置</span></a></li></ol></li></ol>
       </ul>
     </div>
   </div>
