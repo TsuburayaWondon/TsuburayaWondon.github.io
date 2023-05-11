@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+  
+  <title>PowerShell 命令概述 | Tsuburaya Wondonの小站</title>
+  <link rel="shortcut icon" href="/img/favicon.png">
+  <meta name="description" content="PowerShell 语法关系图 1234&lt;command-name&gt; -&lt;Required Parameter Name&gt; &lt;Required Parameter Value&gt;[-&lt;Optional Parameter Name&gt; &lt;Optional Parameter Value&gt;][-&lt;Optional Switch Para">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PowerShell 命令概述">
+<meta property="og:url" content="https://www.tsu-wondon.top/2023-05-11-PowerShell-%E5%91%BD%E4%BB%A4%E6%A6%82%E8%BF%B0.html">
+<meta property="og:site_name" content="Tsuburaya Wondonの小站">
+<meta property="og:description" content="PowerShell 语法关系图 1234&lt;command-name&gt; -&lt;Required Parameter Name&gt; &lt;Required Parameter Value&gt;[-&lt;Optional Parameter Name&gt; &lt;Optional Parameter Value&gt;][-&lt;Optional Switch Para">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-11T14:43:14.000Z">
+<meta property="article:modified_time" content="2023-05-11T14:45:28.772Z">
+<meta property="article:author" content="Tsuburaya Wondon">
+<meta property="article:tag" content="shell">
+<meta name="twitter:card" content="summary">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+<script src="/js/image-preview.js" defer></script>
+
+  
+  
+<script src="/js/main.js" defer></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<html>
+
+<body>
+  <div class="container">
+    <header class="user-select">
+  <div class="container-wrap">
+    <div class="container">
+      
+      
+      
+      <style>
+        .logo>* {
+          width:auto;height:4rem;border-radius:50%;;
+        }
+      </style>
+      
+      <a href="/" class="logo">
+        <img src="/img/logo.gif" />
+      </a>
+      
+      <nav>
+        
+        <div class="search" tabindex="-1">
+          <input class="search-input" placeholder="搜索文章" type="search" maxlength="64">
+          <div class="seach-icon-container">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12.4008 12.4008C14.744 10.0577 14.744 6.25871 12.4008 3.91556C10.0577 1.57242 6.25871 1.57242 3.91556 3.91556C1.57242 6.25871 1.57242 10.0577 3.91556 12.4008C6.25871 14.744 10.0577 14.744 12.4008 12.4008ZM12.4008 12.4008L15.5828 15.5828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"></path>
+</svg>
+          </div>
+          <div class="search-history">
+            <div class="search-history-title">
+              <span>搜索历史</span>
+              <span class="search-history-clear">清空</span>
+            </div>
+            <div class="search-history-list"></div>
+          </div>
+          <div class="search-result"></div>
+          
+          
+<script src="/js/search.js" extname="xml" path="&#x2F;search.xml" async></script>
+
+        </div>
+        
+        <ul class="nav-list">
+          
+          <li class="nav-list-item">
+            <a href="/">主页</a>
+          </li>
+          
+          <li class="nav-list-item">
+            <a href="/archives">归档</a>
+          </li>
+          
+          <li class="nav-list-item">
+            <a href="/about">关于我</a>
+          </li>
+          
+        </ul>
+        <div class="sidebar-nav" tabindex="-1">
+          <svg class="sidebar-nav-btn" viewBox="0 0 16 16" width="16" height="16">
+  <path d="M3,11.335h16M3,6h16M3,16.67h16" transform="translate(-3-3.335)" stroke="currentColor" stroke-width="2" />
+</svg>
+          <div class="mask" tabindex="-1"></div>
+          <ul class="nav-list">
+            
+            <li class="nav-list-item">
+              <a href="/">主页</a>
+            </li>
+            
+            <li class="nav-list-item">
+              <a href="/archives">归档</a>
+            </li>
+            
+            <li class="nav-list-item">
+              <a href="/about">关于我</a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main class="main-block-wrap">
+      <div class="main-block">
+        
+        <h1 class="page-title">PowerShell 命令概述</h1>
+        
+        <article class="article page">
+  <div class="article-info">
+    
+    <img src="https://img1.imgtp.com/2023/05/10/99m0Y0Dl.jpg" alt="avatar" class="avatar">
+    
+    <div class="article-meta">
+      <div class="author-name">Tsuburaya Wondon</div>
+      <div class="article-meta-list">
+        
+        <time datetime="2023-05-11 22:43:14" title="2023-05-11 22:43:14" class="time">
+          2023-05-11 22:43:14
+        </time>
+        
+        <div class="article-meta-item-wrap">
+          
+          <div class="article-meta-item">
+            <svg class="word-icon" width="16" height="16" viewBox="0 0 48 48" fill="none" stroke-width="4" stroke-linejoin="round" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" >
+  <path d="M10 4H30L40 14V42C40 43.1046 39.1046 44 38 44H10C8.89543 44 8 43.1046 8 42V6C8 4.89543 8.89543 4 10 4Z"></path>
+  <path d="M16.0083 20L19.0083 34L24.0083 24L29.0083 34L32.0083 20"></path>
+</svg>
+            <span>1.1k</span>
+          </div>
+          
+          
+          <div class="article-meta-item">
+            <svg class="time-icon" width="16" height="16" viewBox="0 0 48 48" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z" />
+  <path d="M24.0084 12.0001L24.0072 24.0089L32.4866 32.4883" />
+</svg>
+            <span>4min</span>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="article-content"><h3 id="PowerShell-语法关系图">PowerShell 语法关系图</h3>
+<figure class="highlight powershell">
+      <div class="code-block-header" lang="powershell">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;command<span class="literal">-name</span>&gt; -&lt;Required <span class="keyword">Parameter</span> Name&gt; &lt;Required <span class="keyword">Parameter</span> Value&gt;</span><br><span class="line">[-&lt;<span class="type">Optional</span> <span class="type">Parameter</span> <span class="type">Name</span>&gt; &lt;<span class="type">Optional</span> <span class="type">Parameter</span> <span class="type">Value</span>&gt;]</span><br><span class="line">[-&lt;<span class="type">Optional</span> <span class="type">Switch</span> <span class="type">Parameters</span>&gt;]</span><br><span class="line">[-&lt;<span class="type">Optional</span> <span class="type">Parameter</span> <span class="type">Name</span>&gt;] &lt;Required <span class="keyword">Parameter</span> Value&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="解析">解析</h3>
+<p>看到上面的一大串，你是否感到费解呢，别急，我们一一来看🤓</p>
+<h4 id="参数项">参数项</h4>
+<ul>
+<li>
+<p><strong>command-name</strong><br>
+<strong>命令名称</strong>。命令总是以命令名称开头，命令名称可以是标准的命令名也可以是它的<strong>别名</strong></p>
+</li>
+<li>
+<p><strong>Parameter</strong><br>
+<strong>参数</strong>。命令的参数是确定<strong>命令的作用</strong>的选项。</p>
+<ul>
+<li>
+<p><strong>Parameter Name</strong><br>
+<strong>参数名</strong>。前面带上连接短线“-”。（这和其它 shell 稍有不同，例如在 bash shell 中，带“-”的我们一般称之为选项，参数是另外的概念。但是在 PowerShell 中，我们全部称之为“参数”）</p>
+</li>
+<li>
+<p><strong>Parameter Value</strong><br>
+<strong>参数值</strong>。参数值是参数采用的<strong>输入</strong>。（由于Windows PowerShell基于 Microsoft .NET Framework，因此参数值按 .NET 类型在语法关系图中表示）</p>
+</li>
+<li>
+<p><strong>Required</strong>…<br>
+左右尖括号“&lt;&gt;”。表示必选。</p>
+</li>
+<li>
+<p>Optional…<br>
+左右方括号“[]”。表示可选。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Switch Parameter</strong><br>
+<strong>开关参数</strong>。不带参数值的参数。</p>
+</li>
+</ul>
+<h4 id="参数集">参数集</h4>
+<p>命令的参数列在参数集中。参数集类似于语法关系图的段落。简单地说，参数集是一个命令可能同时有的参数的集合。某些命令的参数集只有一个，但是多数命令的参数集有多个。</p>
+<ul>
+<li>
+<p>参数集仅包含可在命令中<strong>一起使用</strong>的参数。 如果参数不能在同一命令中使用，它们将显示在单独的参数集中。</p>
+</li>
+<li>
+<p>每个 cmdlet 都有一个<strong>默认参数集</strong>。如果未指定参数集唯一的参数，则使用默认参数集。</p>
+</li>
+<li>
+<p>在每个参数集中，参数按位置顺序显示。一般来说参数的顺序是任意的。仅当省略可选参数名称时，命令中的参数顺序才重要。省略参数名称时，PowerShell 按位置和类型将值分配给参数。</p>
+</li>
+</ul>
+<p>这是 <code>New-Alias</code> 的参数集（它只有一个参数集）</p>
+<figure class="highlight powershell">
+      <div class="code-block-header" lang="powershell">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-Alias</span> [-<span class="type">Name</span>] &lt;string&gt; [-<span class="type">Value</span>] &lt;string&gt; [-<span class="type">Description</span> &lt;<span class="built_in">string</span>&gt;] [-<span class="type">Option</span> &lt;<span class="type">ScopedItemOptions</span>&gt;] [-<span class="type">PassThru</span>] [-<span class="type">Scope</span> &lt;<span class="built_in">string</span>&gt;] [-<span class="type">Force</span>] [-<span class="type">WhatIf</span>] [-<span class="type">Confirm</span>] [&lt;<span class="type">CommonParameters</span>&gt;]</span><br></pre></td></tr></table></figure>
+<p>这是 <code>Get-Random</code> 的参数集（它有两个参数集）</p>
+<figure class="highlight powershell">
+      <div class="code-block-header" lang="powershell">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-Random</span> [[-<span class="type">Maximum</span>] &lt;<span class="type">Object</span>&gt;] [-<span class="type">SetSeed</span> &lt;<span class="built_in">int</span>&gt;] [-<span class="type">Minimum</span> &lt;<span class="type">Object</span>&gt;] [&lt;<span class="type">CommonParameters</span>&gt;]</span><br><span class="line"><span class="built_in">Get-Random</span> [-<span class="type">InputObject</span>] &lt;Object[]&gt; [-<span class="type">SetSeed</span> &lt;<span class="built_in">int</span>&gt;] [-<span class="type">Count</span> &lt;<span class="built_in">int</span>&gt;] [&lt;<span class="type">CommonParameters</span>&gt;]</span><br></pre></td></tr></table></figure>
+<h4 id="符号">符号</h4>
+<ul>
+<li>
+<p>连字符 <code>-</code> 指示参数名称<br>
+在命令中，在参数名称前立即键入连字符，没有交错空格，如语法关系图中所示。例如，若要使用 <strong>Name</strong> 参数，请键入：</p>
+  <figure class="highlight powershell">
+      <div class="code-block-header" lang="powershell">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-Name</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>尖括号 <code>&lt;&gt;</code> 表示<strong>占位符文本</strong><br>
+不要直接在命令中键入尖括号或占位符文本（它只是一个通配符哦😉），请将它替换为它描述的具体的项。<br>
+尖括号用于标识参数采用的值的 .NET 类型。例如，若要使用 cmdlet 的 <code>New-Alias</code> <code>-Name</code> 参数，请将字符串<code>&lt;string&gt;</code>替换为一个字符串，该字符串是一个单词或一组用引号括起来的单词。</p>
+</li>
+<li>
+<p><code>[]</code> 方括号指示<strong>可选项</strong>。参数及其值可以是可选的，或者所需参数的名称可以是可选的。<br>
+例如，下面的 <strong>Description</strong> 参数及其值括在括号中，因为它们都是可选的。</p>
+  <figure class="highlight powershell">
+      <div class="code-block-header" lang="powershell">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-<span class="type">Description</span> &lt;<span class="built_in">string</span>&gt;]</span><br></pre></td></tr></table></figure>
+<p>下面的方括号还指示需要 Name 参数值 <code>&lt;string&gt;</code> ，但参数名称“Name”是可选的。</p>
+  <figure class="highlight plaintext">
+      <div class="code-block-header" lang="plaintext">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-Name] &lt;string&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>追加到 .NET 类型的右括号和左括号 <code>[]</code> 表示参数可以接受该类型的一个或多个值。以逗号分隔的列表形式输入值。</p>
+<p>例如，下面 cmdlet New-Alias 的 <code>Name</code> 参数只采用一个字符串，但 Get-Process 的可以采用一个或多个字符串。</p>
+  <figure class="highlight powershell">
+      <div class="code-block-header" lang="powershell">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-Alias</span> [-<span class="type">Name</span>] &lt;string&gt;</span><br><span class="line">   </span><br><span class="line"><span class="built_in">New-Alias</span> <span class="literal">-Name</span> MyAlias</span><br></pre></td></tr></table></figure>
+  <figure class="highlight powershell">
+      <div class="code-block-header" lang="powershell">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-Process</span> [-<span class="type">Name</span>] &lt;string[]&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Get-Process</span> <span class="literal">-Name</span> Explorer, Winlogon, Services</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>&#123;&#125;</code> 大括号指示一个“枚举”，这是参数的有效值集。大括号中的值由垂线 <code>|</code> 分隔。这些竖线表示“排他或”选项，这意味着只能从大括号中列出的值集中选择一个值。<br>
+例如，cmdlet <code>New-Alias</code> 语法包括 <strong>Option</strong> 参数的以下值枚举：</p>
+<figure class="highlight powershell">
+      <div class="code-block-header" lang="powershell">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-Option</span> &#123;None | ReadOnly | Constant | Private | AllScope&#125;</span><br></pre></td></tr></table></figure>
+<p>大括号和垂直条指示可以为 <strong>Option</strong> 参数选择任一列出的值，例如下面的代码就选了“ReadOnly”</p>
+<figure class="highlight powershell">
+      <div class="code-block-header" lang="powershell">
+        <span class="copy-code">COPY</span>
+      </div>
+      <table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-Option</span> ReadOnly</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</div>
+  
+  
+  <div class="article-end">
+    <div class="article-meta">
+      
+      <div class="article-categories">
+        <div class="article-categories-name">分类: </div>
+        
+        <a class="article-categories-item" href="/categories/PowerShell/">
+          PowerShell
+        </a>
+        
+      </div>
+      
+      
+      <div class="article-tags">
+        <div class="article-tags-name">标签: </div>
+        
+        <a class="article-tags-item" href="/tags/shell/">
+          shell
+        </a>
+        
+      </div>
+      
+    </div>
+    
+
+<div class="post-copyright">
+  <div class="post-copyright-icon"><svg class="copyright-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm117.134 346.753c-1.592 1.867-39.776 45.731-109.851 45.731-84.692 0-144.484-63.26-144.484-145.567 0-81.303 62.004-143.401 143.762-143.401 66.957 0 101.965 37.315 103.422 38.904a12 12 0 0 1 1.238 14.623l-22.38 34.655c-4.049 6.267-12.774 7.351-18.234 2.295-.233-.214-26.529-23.88-61.88-23.88-46.116 0-73.916 33.575-73.916 76.082 0 39.602 25.514 79.692 74.277 79.692 38.697 0 65.28-28.338 65.544-28.625 5.132-5.565 14.059-5.033 18.508 1.053l24.547 33.572a12.001 12.001 0 0 1-.553 14.866z" />
+</svg></div>
+  <div class="post-copyright-author">
+    <span class="post-copyright-meta">作者: </span>
+    <span class="post-copyright-info">
+      <a href="https://www.tsu-wondon.top">Tsuburaya Wondon</a>
+    </span>
+  </div>
+  <div class="post-copyright-type">
+    <span class="post-copyright-meta">文章链接: </span>
+    <span class="post-copyright-info">
+      <a href="https://www.tsu-wondon.top/2023-05-11-PowerShell-%E5%91%BD%E4%BB%A4%E6%A6%82%E8%BF%B0.html">https://www.tsu-wondon.top/2023-05-11-PowerShell-%E5%91%BD%E4%BB%A4%E6%A6%82%E8%BF%B0.html</a>
+    </span>
+  </div>
+  <div class="post-copyright-notice">
+    <span class="post-copyright-meta">版权声明: </span>
+    <span class="post-copyright-info">All posts on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> license unless otherwise stated. Please cite <a href="https://www.tsu-wondon.top" target="_blank">Tsuburaya Wondonの小站</a> !</span>
+  </div>
+</div>
+
+  </div>
+  
+</article>
+      </div>
+      <aside tabindex="-1">
+  
+  <div class="sidebar-block sidebar-sticky toc-wrap" tabindex="-1">
+    <div class="toc-btn">
+      <svg class="toc-btn-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z"></path>
+  <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z"></path>
+</svg>
+    </div>
+    <div class="sidebar-title toc-title">目录</div>
+    <div class="sidebar-body">
+      <ul class="toc-list">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PowerShell-%E8%AF%AD%E6%B3%95%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">PowerShell 语法关系图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%A1%B9"><span class="toc-number">2.1.</span> <span class="toc-text">参数项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%9B%86"><span class="toc-number">2.2.</span> <span class="toc-text">参数集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7"><span class="toc-number">2.3.</span> <span class="toc-text">符号</span></a></li></ol></li></ol>
+      </ul>
+    </div>
+  </div>
+  
+</aside>
+    </main>
+    
+    
+
+<footer class="footer main-block-wrap">
+  <div class="main-block">
+    <div class="copyright">
+      &copy; 2023
+      Tsuburaya Wondon
+    </div>
+    <div class="framework-info">
+      <span>框架</span>
+      <a href="https://hexo.io" target="_blank">Hexo</a>
+      <span class="footer-separator">|</span>
+      <span>主题</span>
+      <a href="https://github.com/Lete114/hexo-theme-MengD" target="_blank">MengD</a>
+    </div>
+    
+    <div class="custom">A clean and lightweight Hexo theme</div>
+    
+  </div>
+</footer>
+  </div>
+</body>
+
+</html>
