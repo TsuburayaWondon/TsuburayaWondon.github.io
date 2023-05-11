@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>PowerShell 概述</title>
+      <link href="/2023-05-11-PowerShell-%E6%A6%82%E8%BF%B0.html"/>
+      <url>/2023-05-11-PowerShell-%E6%A6%82%E8%BF%B0.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="什么是-PowerShell">什么是 PowerShell?</h3><p>PowerShell 是一种<strong>跨平台</strong>的<strong>任务自动化</strong>解决方案，包括命令行 shell、脚本语言和配置管理框架。 PowerShell 在 Windows、Linux 和 macOS 上运行。下面主要介绍命令行 shell 和脚本语言。</p><h4 id="命令行-shell">命令行 shell</h4><ul><li><p>shell是什么？<br>shell 是一种<strong>交互式命令行解释器</strong>（输入立刻就可得到输出），它是操作系统与用户之间的接口，用户可以通过 Shell 执行各种操作系统命令，也可以编写 shell 脚本进行自动化操作。在 Linux、Unix 和 macOS 等类 Unix 操作系统中，shell 是一个基本的组成部分，常见的 Shell 包括 <strong>Bash</strong>、Zsh、Fish 等。在 Windows 系统中，也有自带的命令行解释器 <strong>cmd.exe</strong> 和 <strong>PowerShell</strong>，它们同样也是 shell 的一种实现。</p></li><li><p>PowerShell 是一种新式命令 shell，其中包括其它常用 shell 的最佳功能。如下：</p><ul><li>可靠的命令行历史记录</li><li>Tab 自动补全和命令预测</li><li>支持命令和参数别名</li><li>用于链接命令的管道</li><li>控制台内帮助系统，类似于 Linux/Unix <code>man</code> 页面</li></ul></li></ul><h4 id="脚本语言">脚本语言</h4><p>作为一种脚本语言，PowerShell 通常用于自动执行系统管理。</p><ul><li>PowerShell 脚本语言包含以下功能：<ul><li>可通过函数、类、脚本和模块进行扩展</li><li>便于输出的可扩展格式系统</li><li>用于创建动态类型的可扩展类型系统</li><li>对常用数据格式（例如 CSV、JSON 和 XML）的内置支持</li></ul></li></ul><h3 id="什么是-PowerShell-命令？">什么是 PowerShell 命令？</h3><p>PowerShell 命令被称为 <strong>cmdlet</strong>（读作 command-let）（以后我们会很少提到“PowerShell 命令”这一说法，而是用cmdlet）</p><ul><li><p>cmdlet 命名</p><ul><li><p>PowerShell 使用“动词-名词”名称对来命名 cmdlet<br>例如，PowerShell 中包含的 <code>Get-Command</code> cmdlet 用于获取在命令行界面中注册的所有 cmdlet。 <strong>动词</strong>标识 cmdlet 执行的<strong>操作</strong>，<strong>名词</strong>标识该 cmdlet 执行其操作的所在<strong>资源</strong>。这种命名约定便于人们了解 cmdlet 的作用。 还能让你更轻松地找到所查找的命令。 当你查找要使用的 cmdlet 时，可以根据动词或名词进行筛选。</p></li><li><p>使用完整的英文单词<br>为了确保易于理解，PowerShell使用完整的英文单词而不是缩写。例如，使用 Parameter（参数） 而不是 Param</p></li></ul></li></ul><h3 id="在-Windows-系统上安装新版-PowerShell">在 Windows 系统上安装新版 PowerShell</h3><p>通常 Windows 系统自带 PowerShell 5.1版本，这个版本相对陈旧，如果想要跟好的体验，建议新安装一个（旧版的不会被覆盖）。推荐一种比较方便的方法————使用 winget（Windows 包管理器，一个命令行工具）</p><ul><li><p>检测电脑是否有安装 winget<br>打开 微软商店（Microsoft Store）（如果桌面上未建快捷方式可按 win 键然后搜索）搜索 winget（如果开了代理请关闭），选中<strong>应用安装程序</strong>（winget 译名），然后鼠标滑至最底部<br>如下图，如果发现有红框里的内容，说明已安装。没安装的话可以滑上去安装。<br><img src="https://img1.imgtp.com/2023/05/11/VBT0Cvg7.png" alt=""></p></li><li><p>将 winget 所在目录加入系统环境变量中的 PATH</p><p>加入 PATH 后，我们才可以在终端中直接输入 <code>winget</code> 就可以访问到它。</p><ul><li><p>按键盘上的 win 键，搜索 winget，点击右侧的“打开文件所在目录”<br><img src="https://img1.imgtp.com/2023/05/11/oG5jqFH6.png" alt="Snipaste_2023-05-11_18-18-58.png"></p></li><li><p>复制目录地址<br><img src="https://img1.imgtp.com/2023/05/11/SchBNe6O.png" alt="Snipaste_2023-05-11_18-20-41.png"></p></li><li><p>编辑环境变量<br>按 win 键，输入“环境变量”，打开下面红框框中的<br><img src="https://img1.imgtp.com/2023/05/11/nMIvztCf.png" alt="Snipaste_2023-05-11_18-29-58.png"><br><img src="https://img1.imgtp.com/2023/05/11/vYfoSihU.png" alt="Snipaste_2023-05-11_18-32-50.png"><br><img src="https://img1.imgtp.com/2023/05/11/y9dsKrcP.png" alt="Snipaste_2023-05-11_18-27-10.png"></p><p>往下滑找到 PATH，编辑 -&gt; 新建，随后输入之前保存的路径在一路确定即可<br><img src="https://img1.imgtp.com/2023/05/11/egcNNQzU.png" alt="Snipaste_2023-05-11_18-34-35.png"></p></li></ul></li><li><p>打开 PowerShell（按 win + X，选择“Windows终端（管理员）”），输入下面的指令</p>  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winget search Microsoft.PowerShell</span><br></pre></td></tr></table></figure><p>输出如下：</p>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">名称               ID                           版本    源</span><br><span class="line">---------------------------------------------------------------</span><br><span class="line">PowerShell         Microsoft.PowerShell         7.3.4.0 winget</span><br><span class="line">PowerShell Preview Microsoft.PowerShell.Preview 7.4.0.3 winget</span><br></pre></td></tr></table></figure><p>使用 <code>id</code> 参数安装 PowerShell 或 PowerShell 预览版</p>  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">winget install <span class="literal">--id</span> Microsoft.Powershell <span class="literal">--source</span> winget</span><br><span class="line">winget install <span class="literal">--id</span> Microsoft.Powershell.Preview <span class="literal">--source</span> winget</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> PowerShell </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> shell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Git远程仓库</title>
       <link href="/2023-05-10-Git%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93.html"/>
       <url>/2023-05-10-Git%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93.html</url>
